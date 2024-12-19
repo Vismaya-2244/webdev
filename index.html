@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Registration Form</h2>
+        <form id="registrationForm" method="POST">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+            <button type="submit" id="submitButton">Submit</button>
+        </form>
+
+        <div id="result" style="display: none;">
+            <h3>Submitted Information:</h3>
+            <p><strong>Full Name:</strong> <span id="displayName"></span></p>
+            <p><strong>Email Address:</strong> <span id="displayEmail"></span></p>
+            <p><strong>Phone Number:</strong> <span id="displayPhone"></span></p>
+            <p><strong>Address:</strong> <span id="displayAddress"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // jQuery to handle form submission and display the result
+        $(document).ready(function() {
+            // Event listener for form submission
+            $("#registrationForm").on("submit", function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Collecting form data
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var phone = $("#phone").val();
+                var address = $("#address").val();
+
+                // Display the submitted data
+                $("#displayName").text(name);
+                $("#displayEmail").text(email);
+                $("#displayPhone").text(phone);
+                $("#displayAddress").text(address);
+
+                // Show the result section
+                $("#result").show();
+
+                // Optional: Reset the form after submission
+                $("#registrationForm")[0].reset();
+            });
+        });
+    </script>
+</body>
+</html>
